@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main] # তোমার ব্রাঞ্চের নাম main না হয়ে master হলে এখানে master লিখবে
 
 permissions:
   contents: read
@@ -19,8 +19,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-          # cache: 'npm'  <-- এই লাইনটি আমি সরিয়ে দিয়েছি সমস্যা এড়াতে
+          node-version: 24 # Node 24 ব্যবহার করা হয়েছে ওয়ার্নিং এড়াতে
 
       - name: Install dependencies
         run: npm install
@@ -34,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist' # Vite ডিফল্টভাবে dist ফোল্ডারে বিল্ড ফাইল রাখে
 
       - name: Deploy to GitHub Pages
         id: deployment
